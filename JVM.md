@@ -1,4 +1,9 @@
 # JVM 메모리 관리
+## 참고 및 공부 글
+- [JVM, 가상머신](https://asfirstalways.tistory.com/158)
+- [가비지컬렉션](https://asfirstalways.tistory.com/159)
+
+
 
 ## 개요
 JVM(Java Virtual Machine)은 Java 프로그램이 실행될 때 메모리를 효율적으로 관리한다. 개발자가 직접 메모리를 할당하고 해제하지 않아도 되는 이유가 바로 JVM의 자동 메모리 관리 때문이다.
