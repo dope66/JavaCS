@@ -17,6 +17,11 @@ JVM(Java Virtual Machine)은 Java 프로그램이 실행될 때 메모리를 효
 5. 해석된 바이트코드는 Runtime Data Areas에 배치되어 실질적인 수행이 이루어지게 된다.
 이러한 실행과정 속에서 JVM은 필요에 따라 Thread Synchronization과 GC같은 관리작업을 수행한다.
 
+
+![실행과정](./image/jvm.JPG)
+
+
+
 ## JVM 메모리 구조
 
 JVM의 메모리는 크게 **메서드 영역**, **힙 영역**, **스택 영역**으로 나뉜다.
