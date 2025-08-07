@@ -237,7 +237,6 @@ PriorityQueue<Person> personQueue = new PriorityQueue<>(
 );
 ```
 
-## 면접 필수 질문들
 
 ### 1. equals()와 hashCode() 계약
 ```java
