@@ -207,94 +207,9 @@ stack.pop();         // 스택에서 제거
 | **앞에서 제거** | O(1) | O(1) | O(log n) |
 | **뒤에서 제거** | O(1) | O(1) | 지원 안함 |
 
-#### 사용 예제
-```java
-// ArrayDeque: 일반적인 큐/스택 (권장)
-Queue<String> queue = new ArrayDeque<>();
-Deque<String> deque = new ArrayDeque<>();
-
-// LinkedList: List도 함께 사용해야 하는 경우
-List<String> list = new LinkedList<>();
-Queue<String> queue2 = (Queue<String>) list;
-
-// PriorityQueue: 우선순위 기반 처리
-PriorityQueue<Task> taskQueue = new PriorityQueue<>(
-    Comparator.comparing(Task::getPriority).reversed()
-);
-```
-
-#### PriorityQueue 사용 예제
-```java
-// 최소 힙 (기본)
-PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-
-// 최대 힙
-PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-
-// 커스텀 비교자
-PriorityQueue<Person> personQueue = new PriorityQueue<>(
-    Comparator.comparing(Person::getAge)
-);
-```
 
 
-### 1. equals()와 hashCode() 계약
-```java
-// hashCode() 규칙
-// 1. equals()가 true면 hashCode()도 같아야 함
-// 2. hashCode()가 같다고 equals()가 true는 아님
-// 3. 객체가 변경되지 않으면 hashCode()도 일정해야 함
-
-public class Person {
-    private String name;
-    private int age;
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Person person = (Person) obj;
-        return age == person.age && Objects.equals(name, person.name);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, age);
-    }
-}
-```
-
-### 2. fail-fast vs fail-safe
-```java
-// fail-fast: ConcurrentModificationException 발생
-List<String> list = new ArrayList<>();
-for (String item : list) {
-    list.remove(item); // 예외 발생!
-}
-
-// fail-safe: 복사본으로 안전한 순회
-List<String> safeList = new CopyOnWriteArrayList<>();
-for (String item : safeList) {
-    safeList.remove(item); // 안전함
-}
-```
-
-### 3. 동기화 방법들
-```java
-// 1. Collections.synchronizedXxx()
-List<String> syncList = Collections.synchronizedList(new ArrayList<>());
-
-// 2. Concurrent Collections (권장)
-Map<String, String> concurrentMap = new ConcurrentHashMap<>();
-List<String> concurrentList = new CopyOnWriteArrayList<>();
-
-// 3. 직접 동기화
-synchronized(list) {
-    // 동기화 블록
-}
-```
-
-### 4. 컬렉션 선택 가이드
+### 컬렉션 선택 가이드
 ```java
 // List 선택
 // - 인덱스 접근 많음: ArrayList
